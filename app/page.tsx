@@ -72,7 +72,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-background font-sans selection:bg-primary/20 selection:text-primary">
+    <main className="min-h-screen bg-background font-sans selection:bg-primary/20 selection:text-primary w-full overflow-x-hidden">
       <Header />
       <WhatsAppButton />
 
