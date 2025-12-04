@@ -1,0 +1,142 @@
+That's a **comprehensive and high-quality wireframe blueprint**! It covers all essential pages and structure for a professional B2B site.
+
+Since your main goal is to reduce the context size while preserving the detailed information, I will present the same content in a **highly compressed, structural format**. This uses less overall text/tokens while retaining the fidelity of your original section-by-section breakdown.
+
+---
+
+# **💾 COMPRESSED SITE WIREFRAME BLUEPRINT**
+
+### **For: Arise Trading & Maintenance W.L.L**
+
+## **1. HOME PAGE**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Header (Sticky)** | Left Logo, Menu (6 links), **WhatsApp Button** (Float), **Get Quote** (Button) | Home, About, Products, Services, Contact, Get Started |
+| **Hero** | Full-width, **10s Video BG** + Overlay | Title: "Quality Products & Service Excellence", Subtitle, Btn: Discover More, Btn: Get a Quote |
+| **Two-Pillar** | Grid 2 Cols (Trading vs Maintenance) | Icon, Title, Text (2 lines), Button (View Products/Services) for each |
+| **Featured Products** | Slider (4–6 Cards) | Image, Title, Short Desc, Button: View Product |
+| **Maintenance Grid** | **3x2 Grid** (6 Services) | Icon, Title, Short Text, "Learn More" Button |
+| **About Company** | Two Columns | Left: Image (Warehouse/Team); Right: Heading, 3 Paragraphs, Button: About Us |
+| **CEO Message** | Two Columns | Left: CEO Image; Right: Scrollable Text, CTA: Meet Our Management |
+| **Why Choose Us** | **4-Icon Grid** | Quality, Reliability, Cost-Effective, On-Time Delivery |
+| **CTA Banner** | Full-width Dark BG | Title: "Get Premium...", Btn: Contact Us, Btn: Get Quote |
+| **Footer** | 4-Col Layout | Quick Links, Products, Services, Contact Info, Newsletter, Social Icons |
+
+---
+
+## **2. ABOUT US**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Image** | Static Image | Title: "About Arise Trading..." |
+| **Company Overview** | Two Columns | Paragraph Text, Image (Office/Team) |
+| **Mission & Vision** | Side-by-Side Cards | Mission, Vision |
+| **Values Grid** | **3x2 Grid** | Quality, Sustainability, Trust, Customer Satisfaction, Reliability, Innovation |
+| **Timeline / Story** | Horizontal Timeline | 2010 (Creation) → 2024 (New services) (5 steps) |
+| **CTA** | Buttons | Explore Trading, Explore Maintenance |
+
+---
+
+## **3. MANAGEMENT**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Banner** | Title | "Leadership & Management" |
+| **CEO Section** | Main Highlight | Large Portrait, Name (**Abdulla Janahi**), Title (CEO), Full Scrollable Message |
+| **Future Leaders** | Grid | 4–6 Placeholders for Expansion |
+
+---
+
+## **4. TRADING DIVISION**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Banner** | Title | "Trading Division" |
+| **Trading Intro** | Image/Video Still, Paragraph | Overview |
+| **Industries Served** | Icons Grid | Retail, Hospitality, Logistics, Corporate, Banking, F&B |
+| **Product Categories** | **4 Big Cards** | Thermal Paper, Thermal Labels, Computer Forms, Wax Ribbons (Image, Title, View Product) |
+| **CTA** | Button | View All Products |
+
+---
+
+## **5. PRODUCTS OVERVIEW**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Banner** | Title | "Our Products" |
+| **Product Grid** | **4–6 Cards** | Image, Title, Description, View Product Button |
+| **Product Features** | Horizontal Bullets | Custom sizes, High durability, Fast printing, Quality guaranteed |
+
+---
+
+## **6. INDIVIDUAL PRODUCT PAGES (Template)**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Image** | Product in Focus | Title: "Thermal Paper Roll" (Example) |
+| **Product Overview** | Two-Column | Left: Image Gallery; Right: **Specs Block** (Sizes, Material, GSM, etc.) |
+| **Applications Grid** | Icons | Retail POS, Banking, Parking, F&B, Logistics (5 items) |
+| **Customization** | List | Colors, Printing, Branding options, Thickness & Length |
+| **Advantages** | List | Eco-friendly, High sensitivity, Long-life image, Durable coating (4 items) |
+| **CTA Sidebar** | Sticky / Fixed Bottom | Btn: Get a Quote, Btn: WhatsApp |
+
+---
+
+## **7. MAINTENANCE DIVISION**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Banner** | Title | "Maintenance Division" |
+| **Division Overview**| Image Left, Text Right | Overview |
+| **Capabilities Grid**| **3x2 Grid** | General, Interior, Exterior, Waterproofing, Electrical & Plumbing, Gardening & Paving |
+| **Gallery Strip** | Slider | Before/After, Workers, Completed Project Photos |
+| **CTA** | Buttons | Book a Service, WhatsApp |
+
+---
+
+## **8. INDIVIDUAL SERVICE PAGES (Template)**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Banner** | Title | "General Maintenance" (Example) |
+| **Description** | 2–3 Paragraphs | Icons for Core Tasks |
+| **Scope of Work** | Checklist Bullets | Detailed Tasks |
+| **Process** | **4-Step Icons** | 1. Inspection, 2. Proposal, 3. Execution, 4. Handover |
+| **Gallery** | **3x3 Grid** | Project Images |
+| **CTA** | Buttons | Book Now, WhatsApp |
+
+---
+
+## **9. CONTACT US**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Title** | Title | "Contact Us" |
+| **Two Column Layout**| Left: Contact Form | Full Name, Email, Phone, Message, Submit Button |
+| | Right: Info Block | Address, Phone, Email, Working Hours, **Google Map Embed** |
+
+---
+
+## **10. GET A QUOTE PAGE**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **Hero Title** | Title | "Request a Quote" |
+| **Form Section** | Detailed Form | Business Name, Contact Person, Phone, Email, **Product/Service Dropdown**, Quantity/Scope, **File Upload**, Message, Submit |
+| **Sidebar Section** | Quick Contact | Quick Details, WhatsApp Button, FAQ |
+
+---
+
+## **11. FOOTER (GLOBAL)**
+
+| Section | Layout/Content | Key Elements |
+| :--- | :--- | :--- |
+| **4-Column Layout**| 1. Company | About, Management, Contact |
+| | 2. Products | Thermal Paper Roll, Label, Forms, Ribbon |
+| | 3. Services | General, Interior, Exterior Maintenance |
+| | 4. Contact | Phone, Email, Address, **Social Icons**, **Newsletter Signup** |
+
+---
+**What would you like to generate next?** For instance, I can provide the **Figma-ready layout instructions** or help you with **full website content writing** based on this structure.
+
