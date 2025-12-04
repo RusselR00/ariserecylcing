@@ -92,7 +92,7 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/assets/Herosectionnew1.mp4" type="video/mp4" />
+            <source src="https://4cwqegzr3mp4p6xh.public.blob.vercel-storage.com/Herosectionnew1.mp4" type="video/mp4" />
           </video>
 
         </div>
