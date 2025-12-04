@@ -132,8 +132,8 @@ export default function Home() {
             {/* Trading Pillar */}
             <div className="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="p-8 lg:p-12 space-y-6 relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform duration-500">
+              <div className="p-8 lg:p-12 space-y-6 relative z-10 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-500">
                   <Truck className="w-8 h-8" />
                 </div>
                 <h2 className="text-3xl font-bold text-brand-dark font-heading">Premium Trading Solutions</h2>
@@ -152,8 +152,8 @@ export default function Home() {
             {/* Maintenance Pillar */}
             <div className="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="p-8 lg:p-12 space-y-6 relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-brand-dark mb-4 group-hover:scale-110 transition-transform duration-500">
+              <div className="p-8 lg:p-12 space-y-6 relative z-10 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-brand-dark mb-4 mx-auto group-hover:scale-110 transition-transform duration-500">
                   <Wrench className="w-8 h-8" />
                 </div>
                 <h2 className="text-3xl font-bold text-brand-dark font-heading">Professional Maintenance</h2>
@@ -275,7 +275,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">About Arise Trading & Maintenance</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Founded on the principles of reliability and quality, Arise Trading & Maintenance W.L.L. has grown to become a dual-service powerhouse, supporting businesses across the GCC with essential products and property care.
@@ -312,9 +312,9 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Message from Chairman</h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-center">
                 <p>
                   At Arise, we take great pride in being a leading player in the thermal paper trading industry. Since our inception, we have been dedicated to delivering high-quality products and services to meet the growing demands of businesses across Kingdom of Bahrain.
                 </p>
@@ -397,7 +397,7 @@ export default function Home() {
         <div className="container px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-8">
-              <div className="space-y-4">
+              <div className="space-y-4 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Get In Touch</h2>
                 <p className="text-muted-foreground text-lg">
                   Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
