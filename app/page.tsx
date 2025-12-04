@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock, ShieldCheck, ThumbsUp, Truck, Wrench } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench } from "lucide-react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
@@ -300,6 +300,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CHAIRMAN MESSAGE SECTION */}
+      <section className="py-24 bg-gray-50">
+        <div className="container px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-xl lg:order-last">
+              <Image
+                src="/assets/chairman.png"
+                alt="Abdulla Janahi - CEO"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Message from Chairman</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
+                <p>
+                  At Arise, we take great pride in being a leading player in the thermal paper trading industry. Since our inception, we have been dedicated to delivering high-quality products and services to meet the growing demands of businesses across Kingdom of Bahrain.
+                </p>
+                <p>
+                  Our commitment to innovation, sustainability, and customer satisfaction drives everything we do. In an increasingly competitive market, we continue to focus on building strong relationships with our clients, ensuring that they receive not only the best products but also the best service experience.
+                </p>
+                <p>
+                  Our team is continually adapting to the latest technological advancements and industry trends to offer solutions that meet the evolving needs of our customers. As we move forward, our vision is to expand our reach into new markets and industries while maintaining the high standards that have been the hallmark of our success.
+                </p>
+                <p>
+                  We are also committed to embracing environmentally responsible practices, ensuring that our operations contribute to a sustainable future. Thank you for being a part of our journey, and I look forward to continuing our growth and success together.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-border/50">
+                <h3 className="text-2xl font-bold text-primary">Abdulla Janahi</h3>
+                <p className="text-brand-dark font-medium">CEO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE US */}
       <section className="py-24 bg-[#2C3E50] text-white relative overflow-hidden">
         <div className="container px-4 relative z-10">
@@ -376,6 +413,17 @@ export default function Home() {
                     <h4 className="font-bold text-brand-dark mb-1">Working Hours</h4>
                     <p className="text-muted-foreground">Sunday - Thursday</p>
                     <p className="text-muted-foreground">8:00 AM – 5:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+                  <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-brand-dark shrink-0">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-dark mb-1">Contact Us</h4>
+                    <p className="text-muted-foreground">+973 33170820</p>
+                    <p className="text-muted-foreground">+973 38786000</p>
                   </div>
                 </div>
 

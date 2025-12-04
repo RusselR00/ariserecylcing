@@ -157,6 +157,14 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Add padding on mobile for fixed contact buttons */
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: 64px;
+      /* Height of mobile contact buttons */
+    }
+  }
 }
 
 @layer utilities {

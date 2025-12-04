@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import MobileContactButtons from "./components/MobileContactButtons";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${montserrat.variable} ${inter.variable} font-sans antialiased`}
       >
         {children}
+        <MobileContactButtons />
       </body>
     </html>
   );

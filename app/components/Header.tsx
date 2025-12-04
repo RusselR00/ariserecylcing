@@ -69,9 +69,9 @@ export default function Header() {
                     className="flex items-center gap-2"
                     onClick={(e) => handleNavClick(e, "#hero")}
                 >
-                    <div className="relative h-24 w-72">
+                    <div className="relative h-20 w-54">
                         <Image
-                            src="/assets/newerlogo.png"
+                            src="/assets/newerlogo2.png"
                             alt="Arise Trading & Maintenance"
                             fill
                             className="object-contain object-left"
