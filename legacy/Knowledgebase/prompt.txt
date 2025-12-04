@@ -1,0 +1,180 @@
+That's ambitious! To give you the best possible output for all five requests, I will address them one by one, starting with the most foundational structural and content elements (1 and 2), followed by design and strategy (3, 4, and 5).
+
+Here is the plan:
+
+1.  **Figma-ready layout instructions** (Structural Blueprint)
+2.  **Full website content writing** (Core Page Text)
+3.  **Frontend UI theme** (Design System)
+4.  **Hero video Ai prompt** (Visual Production)
+5.  **Sitemap.xml + SEO strategy** (Technical/Marketing)
+
+---
+
+## 1. 🎨 Figma-Ready Layout Instructions (Structural Blueprint)
+
+This defines the technical frame settings, component names, and grid for a UI designer starting a new project file. We will use a standard desktop resolution of **1440px** and a responsive 12-column grid.
+
+### **A. Global Grid System**
+
+| Parameter | Value | Notes |
+| :--- | :--- | :--- |
+| **Resolution** | 1440px (Desktop Frame Width) | Standard high-resolution design width. |
+| **Grid Type** | Columns | |
+| **Count** | 12 | Standard for flexibility. |
+| **Margin** | 120px | 120px margins on left and right for content area separation. |
+| **Gutter** | 32px | Spacing between columns. |
+| **Content Width** | 1200px | Total available width for main content blocks. |
+
+### **B. Key Components & Frame Naming**
+
+The designer should create reusable components for efficiency:
+
+| Component Name (Figma) | Description | Usage |
+| :--- | :--- | :--- |
+| `Header / Sticky` | Logo, Nav Links, CTAs (`Button / Quote`, `Button / WhatsApp`) | Global (Top of every page) |
+| `Footer / Global` | 4-Column structure, Social Icons, Newsletter | Global (Bottom of every page) |
+| `Button / Primary` | Blue/Brand Color, CTA like "Get a Quote" | Hero, CTA Banners |
+| `Button / Secondary` | Outline/Ghost Style, CTA like "Discover More" | Hero, Section Buttons |
+| `Card / Trading Category` | Large 4-up cards (Trading Div page) | Product grouping |
+| `Card / Service` | 3x2 Grid items (Home & Services pages) | Maintenance offering |
+| `Input Field / Default` | All form fields (Contact, Quote) | Global Forms |
+
+### **C. Page Frame Setup Example (Home)**
+
+| Section Name (Figma Frame) | Layout Instructions (12-Column Grid) | Component/Note |
+| :--- | :--- | :--- |
+| `01 / Header` | Full Width (1440px), Position: Sticky | Instance of `Header / Sticky` |
+| `02 / Hero` | Full Width (1440px), H: 800px min | Background Video Layer, Title (Col 1-9), Buttons (Col 1-6) |
+| `03 / Two Pillar` | Full Width (1440px), Padded 120px | Trading (Col 1-6), Maintenance (Col 7-12) |
+| `04 / Featured Products`| Full Width (1440px), Padded 120px | Slider Component (4 cards visible in 1200px content area) |
+| `05 / Maintenance Grid`| Content Width (1200px centered) | 3x2 grid, each Card spans 4 columns |
+| `06 / About Overview` | Content Width (1200px centered) | Left Image (Col 1-5), Right Text/CTA (Col 7-12) |
+| `07 / CEO Message` | Content Width (1200px centered) | Left Image (Col 1-4), Right Text (Col 6-12) |
+| `08 / Why Choose Us` | Content Width (1200px centered) | 4-up Icon Grid, each item spans 3 columns |
+| `09 / CTA Banner` | Full Width (1440px), Dark BG | Title centered, Buttons centered |
+| `10 / Footer` | Full Width (1440px) | Instance of `Footer / Global` |
+
+---
+
+## 2. ✍️ Full Website Content Writing (Core Text)
+
+### **A. HOME PAGE - Content**
+
+| Section | Title / Body Text |
+| :--- | :--- |
+| **Hero Title** | **Quality Products & Service Excellence** |
+| **Hero Subtitle**| Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region. |
+| **Pillar - Trading**| **Premium Corporate & Trading Solutions** / Providing high-quality industrial and office supplies, specializing in thermal paper, ribbons, and custom printing forms. |
+| **Pillar - Maintenance**| **Professional Maintenance Services** / Dedicated to delivering reliable, cost-effective maintenance and interior/exterior fit-out solutions for commercial properties. |
+| **About Heading** | **About Arise Trading & Maintenance** |
+| **About Paragraph 1**| Founded on the principles of reliability and quality, Arise Trading & Maintenance W.L.L. has grown to become a dual-service powerhouse, supporting businesses across the GCC with essential products and property care. |
+| **About Paragraph 2**| We pride ourselves on sourcing the best materials for our trading division and employing skilled, professional teams for our maintenance services, ensuring superior results every time. |
+| **CTA Banner** | **Get Premium Trading & Reliable Maintenance Services. Let's start the conversation.** |
+
+### **B. ABOUT US - Mission & Vision**
+
+| Section | Title / Body Text |
+| :--- | :--- |
+| **Mission** | To consistently deliver the highest quality trading products and maintenance services, fostering long-term partnerships built on trust, efficiency, and exceptional value. |
+| **Vision** | To be the recognized leader in integrated corporate trading and professional maintenance across the Middle East, setting the standard for quality and comprehensive client support. |
+
+### **C. TRADING DIVISION - Content**
+
+| Section | Title / Body Text |
+| :--- | :--- |
+| **Trading Intro** | Arise Trading Division is your dependable supplier for specialized corporate consumables. We ensure your operations run smoothly by providing customized, durable, and high-clarity paper products and printing supplies manufactured to international standards. |
+| **Product Categories**| **Thermal Paper Rolls:** High-sensitivity, long-life image paper for all POS and banking needs. / **Thermal Labels:** Custom size and adhesive options for logistics and retail. / **Computer Forms:** Tailored multi-ply and continuous forms for operational efficiency. / **Wax Ribbons:** Premium quality ribbons for clear, lasting thermal transfer printing. |
+
+### **D. CONTACT US - Content**
+
+| Item | Details |
+| :--- | :--- |
+| **Office Address**| Office 101, Business Tower, Building 2, Doha, Qatar |
+| **Phone** | +974 44XX XXXX (Trading Enquiries) / +974 44XX XXXX (Maintenance Bookings) |
+| **Email** | info@arisetrading.com / sales@arisetrading.com |
+| **Working Hours**| Sunday - Thursday: 8:00 AM – 5:00 PM |
+
+---
+
+## 3. 🖥️ Frontend UI Theme (Design System)
+
+This defines the initial visual identity, ready for the UI phase.
+
+### **A. Color Palette**
+
+| Color Name | Hex Code | Usage |
+| :--- | :--- | :--- |
+| **Primary/Brand**| `#00509D` | **Deep Corporate Blue** (Buttons, Headers, Icons) |
+| **Secondary/Accent**| `#FFC300` | **Gold/Amber** (Highlights, Hover states, Critical info) |
+| **Neutral Dark** | `#2C3E50` | **Charcoal Blue** (Body text, Dark BG sections, Footer) |
+| **Neutral Light** | `#F4F6F9` | **Light Gray** (Backgrounds for sections, Card BG) |
+| **White** | `#FFFFFF` | Headings, standard text on dark BGs |
+
+### **B. Typography**
+
+| Element | Font Family | Weight/Style | Usage |
+| :--- | :--- | :--- | :--- |
+| **Heading 1 (H1)**| **Montserrat** | Bold (700) | Hero Titles (Large, impactful) |
+| **Heading 2 (H2)**| **Montserrat** | Semi-Bold (600) | Section Titles |
+| **Body Text** | **Inter** | Regular (400) | Paragraphs, Forms, Links (High readability) |
+| **Buttons** | **Inter** | Medium (500) | CTAs |
+
+### **C. Spacing & Radius**
+
+* **Base Unit:** 8px (All padding, margins, and gaps must be multiples of 8: 8, 16, 24, 32, 48, etc.)
+* **Card Corner Radius:** 8px or 12px (Soft, professional look)
+* **Button Corner Radius:** 4px (Slightly less rounded for a corporate feel)
+
+---
+
+## 4. 🎬 Hero Video AI Prompt
+
+This prompt is ready for a professional video generation tool (like Runway, Pika, or for brief concept direction).
+
+> **Concept:** Dual-Service Excellence: Trading meets Maintenance.
+>
+> **Style:** Cinematic, high-contrast, professional, corporate documentary feel. Use a subtle, aspirational lens flare.
+>
+> **Prompt:** **[SHOT 1: TRADING]** A fast, smooth, macro dolly shot tracking across a clean, stacked row of high-quality thermal paper rolls and glossy printing ribbons. Transition with a sharp focus pull to a customized shipping box being sealed with the Arise logo. **[SHOT 2: MAINTENANCE]** Immediate cut to a professional maintenance team member (wearing branded safety gear) meticulously applying a waterproofing membrane on a clean rooftop. Next, a close-up tracking shot of a polished interior fit-out: a carpenter smoothly installing a custom wooden panel into a sleek corporate office wall. **[CLOSING SHOT]** A final, wide aerial shot of a modern, well-maintained commercial building in a Middle Eastern cityscape at sunset, with the Arise logo subtly overlayed and dissolved. **Camera:** High dynamic range, 4K, realistic lighting. **Duration:** 10 seconds total.
+
+---
+
+## 5. 🗺️ Sitemap.xml & SEO Strategy
+
+### **A. Sitemap.xml Structure (Prioritized)**
+
+| URL Path | Priority | Change Frequency | Notes |
+| :--- | :--- | :--- | :--- |
+| `/` (Home) | **1.0** | weekly | Highest importance and most frequent updates (products/offers). |
+| `/about-us` | 0.8 | monthly | Key corporate information. |
+| `/trading-division`| 0.9 | monthly | Main gateway for products. |
+| `/maintenance-division`| 0.9 | monthly | Main gateway for services. |
+| `/products` | 0.8 | weekly | Overview of all offerings. |
+| `/services` | 0.8 | monthly | Overview of all maintenance offerings. |
+| `/products/thermal-paper-roll`| 0.7 | monthly | Individual product pages for deep SEO value. (Repeat for all 4) |
+| `/services/general-maintenance`| 0.7 | monthly | Individual service pages. (Repeat for all 6) |
+| `/contact-us` | 0.6 | yearly | Standard contact information. |
+| `/get-a-quote` | 0.6 | yearly | Conversion focused page. |
+| `/management` | 0.5 | yearly | Low-priority corporate page. |
+
+### **B. Core SEO Strategy (Keyword Targeting)**
+
+| Page | Primary Target Keyword (PTK) | Secondary Keywords |
+| :--- | :--- | :--- |
+| **Home** | **Trading and Maintenance W.L.L. [Location]** | Corporate Supply, Professional Maintenance Services |
+| **Trading** | **Thermal Paper Roll Supplier [Location]** | Thermal Label Supplier, Computer Forms, Wax Ribbons |
+| **Maintenance**| **Professional Property Maintenance [Location]** | Commercial Fit Out, Interior Works, Exterior Maintenance |
+| **General Maint.**| **General Maintenance Company [Location]** | Facilities Management, Property Handyman Services |
+| **Product Page** | **High Quality Thermal Paper Rolls [Specs]** | POS Paper Supplier, Custom Printed Thermal Paper |
+
+### **C. Key Technical SEO Directives**
+
+1.  **Speed:** Ensure all images and video assets are compressed for fast loading, targeting a **Core Web Vitals LCP of < 2.5 seconds**.
+2.  **Schema Markup:** Implement `Organization` schema on the Home/About pages and `Product` schema on the individual product pages (with pricing/availability fields).
+3.  **Local SEO:** Ensure the **Contact Us** page uses the correct NAP (Name, Address, Phone) data that matches Google My Business for local rankings in Doha and across Qatar.
+
+---
+
+This completes all five requests, covering the structure, content, design, media, and marketing strategy.
+
+**Next Step:** Would you like to review a specific section, or would you like me to use the SEO strategy to generate **Meta Titles and Descriptions** for the core pages?

@@ -1,0 +1,554 @@
+Below is a **complete, detailed, agency-grade wireframe blueprint** for your 10–15 page Arise Trading & Maintenance W.L.L website.
+
+These wireframes are written **section-by-section**, exactly how a UI/UX designer would structure them in Figma.
+I can also convert these into **actual Figma-ready structure** if you prefer.
+
+---
+
+# **📐 FULL SITE WIREFRAMES (TEXT-BASED BLUEPRINT)**
+
+### For: **Arise Trading & Maintenance W.L.L**
+
+### Format: Section-by-section, layout-first, no design yet (pure structure)
+
+---
+
+# **1. HOME PAGE — WIREFRAME**
+
+### **Header (Sticky)**
+
+* Logo (left)
+* Menu (Home | About | Products | Services | Contact | Get Started)
+* Buttons:
+
+  * **WhatsApp Button** (floating-right)
+  * **Get Quote** (top-right)
+
+---
+
+### **Hero Section** (Full-width)
+
+* Background: Cinematic 10s hero video (Trading + Maintenance)
+* Overlay:
+
+  * Large Title: **“Quality Products & Service Excellence”**
+  * Subtitle: **“Trading | Maintenance | Corporate Supplies”**
+  * Primary Button: **Discover More**
+  * Secondary Button: **Get a Quote**
+
+---
+
+### **Two-Pillar Section (Trading vs Maintenance)**
+
+Grid 2 columns:
+
+**LEFT — Trading**
+
+* Icon
+* Title: *Premium Trading Solutions*
+* Text: 2 lines
+* Button: View Products
+
+**RIGHT — Maintenance**
+
+* Icon
+* Title: *Professional Maintenance Services*
+* Text: 2 lines
+* Button: View Services
+
+---
+
+### **Featured Products Slider**
+
+* Card layout (4–6 cards)
+* Each card:
+
+  * Product image
+  * Title
+  * Short description
+  * Button: View Product
+
+---
+
+### **Maintenance Services Grid**
+
+3×2 Grid (6 services)
+
+* General Maintenance
+* Interior Works
+* Exterior Works
+* Waterproofing
+* Electrical & Plumbing
+* Gardening & Paving
+
+Each card:
+
+* Icon
+* Title
+* Short text
+* “Learn More” button
+
+---
+
+### **About Company Section**
+
+Two-column layout:
+
+* Left: Image of warehouse / team
+* Right:
+
+  * Heading: “About Arise Trading & Maintenance”
+  * 3 short paragraphs
+  * Button: About Us
+
+---
+
+### **CEO Message Highlight**
+
+* CEO image (left)
+* Scrollable text block (right)
+* CTA: “Meet Our Management”
+
+---
+
+### **Why Choose Us**
+
+4-icon grid (Quality, Reliability, Cost-Effective, On-Time Delivery)
+
+---
+
+### **CTA Banner**
+
+Full-width dark background:
+
+* Title: “Get Premium Trading & Reliable Maintenance Services”
+* Button: Contact Us
+* Button: Get Quote
+
+---
+
+### **Footer**
+
+* Quick Links
+* Products
+* Services
+* Contact Info
+* Newsletter signup
+* Social Icons
+
+---
+
+# **2. ABOUT US — WIREFRAME**
+
+### **Hero Image** (static)
+
+Title: “About Arise Trading & Maintenance W.L.L”
+
+---
+
+### **Company Overview**
+
+Two columns:
+
+* Paragraph text
+* Image (office/team/product warehouse)
+
+---
+
+### **Mission & Vision**
+
+Side-by-side cards:
+
+* Mission
+* Vision
+
+---
+
+### **Values Grid**
+
+3×2 grid:
+
+* Quality
+* Sustainability
+* Trust
+* Customer Satisfaction
+* Reliability
+* Innovation
+
+---
+
+### **Timeline / Story**
+
+Horizontal timeline:
+
+* 2010 → Creation
+* 2012 → Added Trading
+* 2015 → Added Maintenance
+* 2020 → Expansion
+* 2024 → New services
+
+---
+
+### **CTA**
+
+Button: Explore Trading
+Button: Explore Maintenance
+
+---
+
+# **3. MANAGEMENT — WIREFRAME**
+
+### **Hero Banner**
+
+Title: “Leadership & Management”
+
+---
+
+### **CEO Section (Main Highlight)**
+
+* CEO Portrait (large)
+* Name: *Abdulla Janahi*
+* Title: CEO
+* Full message (scrollable box)
+* Signature graphic (optional)
+
+---
+
+### **Future Leaders / Team Section (Optional)**
+
+Grid with 4–6 placeholders for expansion.
+
+---
+
+# **4. TRADING DIVISION — WIREFRAME**
+
+### **Hero Banner**
+
+Title: “Trading Division”
+
+---
+
+### **Trading Intro**
+
+* Paragraph
+* Image or warehouse video still
+
+---
+
+### **Industries Served**
+
+Icons grid:
+
+* Retail
+* Hospitality
+* Logistics
+* Corporate
+* Banking
+* Food & Beverage
+
+---
+
+### **Product Categories Grid**
+
+4 big cards:
+
+* Thermal Paper Roll
+* Thermal Labels
+* Computer Forms
+* Wax Ribbons
+
+Each card:
+
+* Image
+* Title
+* “View Product”
+
+---
+
+### **CTA**
+
+Button: View All Products
+
+---
+
+# **5. PRODUCTS OVERVIEW — WIREFRAME**
+
+### **Hero Banner**
+
+Title: “Our Products”
+
+---
+
+### **Product Grid (4–6 cards)**
+
+Each card:
+
+* Product image
+* Title
+* Description
+* View Product button
+
+---
+
+### **Product Features Bar**
+
+Horizontal bullets:
+
+* Custom sizes
+* High durability
+* Fast printing
+* Quality guaranteed
+
+---
+
+# **6. INDIVIDUAL PRODUCT PAGES — WIREFRAMES**
+
+Repeat for each:
+
+### **Hero Image**
+
+Product in focus
+Title: “Thermal Paper Roll”
+
+---
+
+### **Product Overview Section**
+
+Two-column:
+
+* Image gallery (left)
+* Specs block (right)
+
+  * Sizes
+  * Material
+  * Core sizes
+  * GSM
+  * Print clarity
+
+---
+
+### **Applications Grid**
+
+* Retail POS
+* Banking
+* Parking
+* F&B
+* Logistics
+
+---
+
+### **Customization Section**
+
+* Colors
+* Printing
+* Branding options
+* Roll thickness & length
+
+---
+
+### **Advantages List**
+
+* Eco-friendly
+* High sensitivity
+* Long-life image
+* Durable coating
+
+---
+
+### **CTA Sticky Sidebar (Mobile fixed bottom)**
+
+* Button: Get a Quote
+* Button: WhatsApp
+
+---
+
+# **7. MAINTENANCE DIVISION — WIREFRAME**
+
+### **Hero Banner**
+
+Title: “Maintenance Division”
+
+---
+
+### **Division Overview**
+
+Image left, text right.
+
+---
+
+### **Capabilities Grid**
+
+3×2 grid:
+
+* General Maintenance
+* Interior Works
+* Exterior Works
+* Waterproofing
+* Electrical & Plumbing
+* Gardening & Paving
+
+---
+
+### **Gallery Strip**
+
+Before/After slider
+Maintenance workers
+Completed project photos
+
+---
+
+### **CTA**
+
+Book a Service
+WhatsApp
+
+---
+
+# **8. INDIVIDUAL SERVICE PAGES — WIREFRAMES**
+
+Repeat for each:
+
+### **Hero Banner**
+
+Title: “General Maintenance”
+
+---
+
+### **Service Description**
+
+* 2–3 paragraphs
+* Icons for core tasks
+
+---
+
+### **Scope of Work List**
+
+Checklist-style bullet points
+
+---
+
+### **Process / How We Work**
+
+Step icons:
+
+1. Inspection
+2. Proposal
+3. Execution
+4. Handover
+
+---
+
+### **Gallery**
+
+3×3 grid of images
+
+---
+
+### **CTA**
+
+* Book Now
+* WhatsApp
+
+---
+
+# **9. CONTACT US — WIREFRAME**
+
+### **Hero Title**
+
+### **Two Column Layout**
+
+Left:
+
+* Contact form
+
+  * Full name
+  * Email
+  * Phone
+  * Message
+  * Submit button
+
+Right:
+
+* Office address
+* Phone numbers
+* Email
+* Working hours
+* Google Map Embed
+
+---
+
+# **10. GET A QUOTE PAGE — WIREFRAME**
+
+### **Hero Title**
+
+“Request a Quote”
+
+---
+
+### **Form Section**
+
+Fields:
+
+* Business name
+* Contact person
+* Phone
+* Email
+* Product/Service dropdown
+* Quantity / scope
+* File upload
+* Message
+* Submit button
+
+---
+
+### **Sidebar Section**
+
+Quick contact details
+WhatsApp button
+FAQ
+
+---
+
+# **11. FOOTER (GLOBAL WIREFRAME)**
+
+### Footer 4-column layout:
+
+1. **Company**
+
+   * About
+   * Management
+   * Contact
+2. **Products**
+
+   * Thermal Paper Roll
+   * Thermal Label
+   * Computer Forms
+   * Wax Ribbon
+3. **Services**
+
+   * General Maintenance
+   * Interior Works
+   * Exterior Works
+4. **Contact**
+
+   * Phone
+   * Email
+   * Address
+   * Social icons
+   * Newsletter signup
+
+---
+
+# **✨ YOUR WIREFRAMES ARE COMPLETE**
+
+If you want, I can also generate:
+
+### **Next Steps (Choose any):**
+
+1. **Figma-ready layout instructions (exact frame setup)**
+2. **Full website content writing (all pages rewritten professionally)**
+3. **Frontend UI theme (colors, fonts, spacing, grid system)**
+4. **Hero video Ai prompt (polished and ready to render)**
+5. **Sitemap.xml + SEO strategy**
+
+Just tell me what you want next.
