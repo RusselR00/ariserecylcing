@@ -90,14 +90,16 @@ export default function Header() {
                             onClick={(e) => handleNavClick(e, link.href)}
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary via-primary to-secondary transition-all duration-300 group-hover:w-full"></span>
+                            {/* Subtle glow on hover */}
+                            <span className="absolute inset-0 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md bg-secondary/20"></span>
                         </Link>
                     ))}
 
                     {/* CTA BUTTON */}
                     <button
                         onClick={handleButtonClick}
-                        className="bg-white text-brand-dark font-semibold text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:bg-white/90 transition-all cursor-pointer"
+                        className="bg-white text-brand-dark font-semibold text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:bg-white/90 transition-all duration-300 hover:scale-105 magnetic-hover glow-effect"
                     >
                         Get Quote
                     </button>
@@ -115,12 +117,12 @@ export default function Header() {
 
             {/* Mobile Dropdown */}
             {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 backdrop-blur-xl bg-black/70 border-t border-white/20 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-                    {navLinks.map((link) => (
+                <div className="md:hidden absolute top-full left-0 right-0 glass-dark border-t border-white/20 p-6 flex flex-col gap-3 animate-fadeIn">
+                    {navLinks.map((link, index) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-white text-lg font-medium py-2 border-b border-white/10 last:border-0"
+                            className={`text-white text-lg font-medium py-3 border-b border-white/10 last:border-0 hover:text-secondary transition-all animate-fadeInUp stagger-${index + 1}`}
                             onClick={(e) => handleNavClick(e, link.href)}
                         >
                             {link.name}
@@ -129,7 +131,7 @@ export default function Header() {
 
                     {/* CTA Mobile */}
                     <button
-                        className="w-full mt-2 bg-white text-brand-dark font-semibold py-3 rounded-full"
+                        className="w-full mt-2 bg-white text-brand-dark font-semibold py-3 rounded-full hover:bg-secondary hover:text-white transition-all duration-300 shadow-lg animate-fadeInUp stagger-6"
                         onClick={handleButtonClick}
                     >
                         Get Quote
