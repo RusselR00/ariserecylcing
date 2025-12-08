@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Arise Trading & Maintenance W.L.L | Quality Products & Service Excellence",
   description: "Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region.",
   keywords: "Trading, Maintenance, Corporate Supplies, Thermal Paper, Professional Services, Qatar",
+  icons: {
+    icon: "/assets/newerlogo2.png",
+  },
 };
 
 export default function RootLayout({

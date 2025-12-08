@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown, User, Mail } from "lucide-react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
@@ -58,7 +58,10 @@ export default function Home() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          message: formData.message || "Requesting a Call Back"
+        }),
       });
 
       const data = await response.json();
@@ -91,7 +94,7 @@ export default function Home() {
       <WhatsAppButton />
 
       {/* HERO SECTION */}
-      <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
 
         {/* Video Background with Parallax */}
         <div
@@ -129,35 +132,126 @@ export default function Home() {
         {/* Floating Background Shapes */}
         <AnimatedBackground />
 
-        {/* Content */}
-        <div className="container relative z-20 px-4 text-center text-white space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] animate-fadeInUp">
-            Quality Products & <br />
-            <span className="text-gradient-static animate-fadeInUp stagger-1">Service Excellence</span>
-          </h1>
-          <p className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto font-semibold animate-fadeInUp stagger-2">
-            Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region.
-          </p>
+        {/* Two-Column Layout */}
+        <div className="container relative z-20 px-4 h-full flex items-center pt-28 pb-12 md:py-0">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-8 w-full items-center max-w-6xl mx-auto">
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fadeInUp stagger-3">
-            <Button
-              size="lg"
-              className="bg-secondary hover:bg-secondary/90 text-brand-dark font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 magnetic-hover glow-effect"
-            >
-              <Link href="#trading">Discover More</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-brand-dark font-semibold text-lg px-8 py-6 h-auto rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 magnetic-hover"
-            >
-              <Link href="#contact">Get a Quote</Link>
-            </Button>
+            {/* LEFT SIDE - Hero Content */}
+            <div className="text-white space-y-6 md:space-y-8 text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] animate-fadeInUp">
+                Quality Products & <br />
+                <span className="text-yellow-400 animate-fadeInUp stagger-1">Service Excellence</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto lg:mx-0 font-semibold animate-fadeInUp stagger-2">
+                Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 md:pt-4 animate-fadeInUp stagger-3">
+                <Button
+                  className="bg-secondary hover:bg-secondary/90 text-brand-dark font-semibold text-base px-6 py-3 h-auto rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 magnetic-hover glow-effect w-full sm:w-auto"
+                >
+                  <Link href="#trading">Discover More</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-brand-dark font-semibold text-base px-6 py-3 h-auto rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 magnetic-hover w-full sm:w-auto"
+                >
+                  <Link href="#trading">View Services</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE - Modern Contact Form */}
+            <div className="animate-fadeInUp stagger-4 flex justify-center lg:justify-end w-full">
+              <div className="relative rounded-3xl p-6 shadow-2xl border-2 border-secondary/50 overflow-hidden w-full max-w-md backdrop-blur-md mx-auto lg:mx-0">
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-brand-dark/95 opacity-95"></div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="mb-6 text-center">
+                    <h2 className="text-2xl font-bold text-white mb-1">Request a Call Back</h2>
+                    <p className="text-yellow-400 text-sm font-medium">We'll contact you shortly</p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-1">
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+                        <Input
+                          name="name"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:bg-white/20 focus:border-secondary h-10 rounded-xl"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+                        <Input
+                          name="phone"
+                          type="tel"
+                          placeholder="Phone Number"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                          className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:bg-white/20 focus:border-secondary h-10 rounded-xl"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+                        <Input
+                          name="email"
+                          type="email"
+                          placeholder="Email Address"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:bg-white/20 focus:border-secondary h-10 rounded-xl"
+                        />
+                      </div>
+                    </div>
+
+                    {formStatus.type && (
+                      <div
+                        className={`text-xs p-2 rounded ${formStatus.type === "success"
+                          ? "bg-green-500/20 text-green-100 border border-green-500/30"
+                          : "bg-red-500/20 text-red-100 border border-red-500/30"
+                          }`}
+                      >
+                        {formStatus.message}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-secondary hover:bg-yellow-500 text-brand-dark font-bold py-4 text-base rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : (
+                        <>
+                          <span>Request Call</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden lg:block">
           <div className="flex flex-col items-center gap-2 text-white/80 cursor-pointer" onClick={() => {
             document.getElementById('trading')?.scrollIntoView({ behavior: 'smooth' });
           }}>
