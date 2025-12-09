@@ -11,6 +11,7 @@ interface Contact {
     email: string;
     phone: string;
     message: string;
+    type?: 'callback' | 'contact';
     createdAt: string;
 }
 
@@ -60,6 +61,10 @@ export default function AdminDashboard() {
         return new Date(dateString).toLocaleString();
     };
 
+    // Filter contacts
+    const callbackRequests = contacts.filter(c => c.type === 'callback' || c.message === "Requesting a Call Back");
+    const customerMessages = contacts.filter(c => c.type !== 'callback' && c.message !== "Requesting a Call Back");
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-brand-light">
@@ -70,8 +75,8 @@ export default function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-brand-light p-8">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex justify-between items-center mb-8">
+            <div className="max-w-7xl mx-auto space-y-8">
+                <div className="flex justify-between items-center">
                     <h1 className="text-3xl font-bold text-brand-dark">Admin Dashboard</h1>
                     <Button
                         onClick={handleLogout}
@@ -88,14 +93,58 @@ export default function AdminDashboard() {
                     </div>
                 )}
 
+                {/* Callback Requests Table */}
                 <Card>
                     <CardHeader>
-                        <CardTitle>Contact Form Submissions ({contacts.length})</CardTitle>
+                        <CardTitle>Callback Requests ({callbackRequests.length})</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        {contacts.length === 0 ? (
+                        {callbackRequests.length === 0 ? (
                             <div className="text-center py-8 text-muted-foreground">
-                                No contact submissions yet.
+                                No callback requests yet.
+                            </div>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead>
+                                        <tr className="border-b">
+                                            <th className="text-left p-4 font-semibold">Date</th>
+                                            <th className="text-left p-4 font-semibold">Name</th>
+                                            <th className="text-left p-4 font-semibold">Phone</th>
+                                            <th className="text-left p-4 font-semibold">Email</th>
+                                            <th className="text-left p-4 font-semibold">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {callbackRequests.map((contact) => (
+                                            <tr key={contact.id} className="border-b hover:bg-gray-50">
+                                                <td className="p-4 text-sm text-muted-foreground">
+                                                    {formatDate(contact.createdAt)}
+                                                </td>
+                                                <td className="p-4 font-medium">{contact.name}</td>
+                                                <td className="p-4">{contact.phone}</td>
+                                                <td className="p-4">{contact.email}</td>
+                                                <td className="p-4">
+                                                    <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Pending</span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </CardContent>
+                </Card>
+
+                {/* Customer Messages Table */}
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Customer Messages ({customerMessages.length})</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        {customerMessages.length === 0 ? (
+                            <div className="text-center py-8 text-muted-foreground">
+                                No customer messages yet.
                             </div>
                         ) : (
                             <div className="overflow-x-auto">
@@ -110,7 +159,7 @@ export default function AdminDashboard() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {contacts.map((contact) => (
+                                        {customerMessages.map((contact) => (
                                             <tr key={contact.id} className="border-b hover:bg-gray-50">
                                                 <td className="p-4 text-sm text-muted-foreground">
                                                     {formatDate(contact.createdAt)}

@@ -3,21 +3,24 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Trading", href: "#trading" },
-    { name: "Maintenance", href: "#maintenance" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#hero" },
+    { name: "About", href: "/#about" },
+    { name: "Trading", href: "/#trading" },
+    { name: "Maintenance", href: "/#maintenance" },
+    { name: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const isHomePage = pathname === "/";
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -26,8 +29,15 @@ export default function Header() {
     }, []);
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        // If we are on a different page and the link is an anchor link (starts with /#),
+        // we don't need to prevent default, let Next.js handle the navigation to the home page anchor.
+        if (!isHomePage && href.startsWith("/#")) {
+            setIsMobileMenuOpen(false);
+            return;
+        }
+
         e.preventDefault();
-        const targetId = href.replace("#", "");
+        const targetId = href.replace("/#", "").replace("#", "");
         const element = document.getElementById(targetId);
         if (element) {
             // Close mobile menu first
@@ -42,6 +52,10 @@ export default function Header() {
     };
 
     const handleButtonClick = () => {
+        if (!isHomePage) {
+            window.location.href = "/#contact";
+            return;
+        }
         const element = document.getElementById("contact");
         if (element) {
             setIsMobileMenuOpen(false);
@@ -56,7 +70,7 @@ export default function Header() {
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled
+                isScrolled || !isHomePage
                     ? "backdrop-blur-lg bg-black/40 py-2 shadow-lg"
                     : "bg-transparent py-4"
             )}

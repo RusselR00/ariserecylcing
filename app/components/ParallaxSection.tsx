@@ -43,6 +43,8 @@ export default function ParallaxSection({
                 style={{
                     transform: `translateY(${offset}px)`,
                     willChange: "transform",
+                    height: "100%",
+                    width: "100%",
                 }}
             >
                 {children}

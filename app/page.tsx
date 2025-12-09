@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown, User, Mail } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown, User, Mail, MapPin } from "lucide-react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
@@ -49,7 +49,7 @@ export default function Home() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submitForm = async (e: React.FormEvent, type: 'callback' | 'contact') => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus({ type: null, message: "" });
@@ -60,7 +60,8 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          message: formData.message || "Requesting a Call Back"
+          type,
+          message: type === 'callback' ? (formData.message || "Requesting a Call Back") : formData.message
         }),
       });
 
@@ -87,6 +88,9 @@ export default function Home() {
       setIsSubmitting(false);
     }
   };
+
+  const handleHeroSubmit = (e: React.FormEvent) => submitForm(e, 'callback');
+  const handleContactSubmit = (e: React.FormEvent) => submitForm(e, 'contact');
 
   return (
     <main className="min-h-screen bg-background font-sans selection:bg-primary/20 selection:text-primary w-full overflow-x-hidden">
@@ -174,7 +178,7 @@ export default function Home() {
                     <p className="text-yellow-400 text-sm font-medium">We'll contact you shortly</p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleHeroSubmit} className="space-y-4">
                     <div className="space-y-1">
                       <div className="relative">
                         <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
@@ -329,30 +333,31 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: "Thermal Paper Rolls", img: "/assets/rollingpaper1.png", desc: "High-sensitivity, long-life image paper.", link: "/products/thermal-paper-rolls" },
-              { title: "Thermal Labels", img: "/assets/print1.png", desc: "Custom size and adhesive options.", link: "/products/thermal-labels" },
+              { title: "Thermal Labels", img: "/assets/thermal_labels.jpeg", desc: "Custom size and adhesive options.", link: "/products/thermal-labels" },
               { title: "Computer Forms", img: "/assets/printing realistic1.png", desc: "Tailored multi-ply and continuous forms.", link: "/products/computer-forms" },
-              { title: "Wax Ribbons", img: "/assets/print2.png", desc: "Premium quality ribbons for clear printing.", link: "/products/wax-ribbons" },
+              { title: "Wax Ribbons", img: "/assets/wax_ribbon.jpeg", desc: "Premium quality ribbons for clear printing.", link: "/products/wax-ribbons" },
             ].map((product, i) => (
               <ScrollAnimation key={i} animation="fadeInUp" delay={i * 100}>
-                <div className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 card-3d gradient-border h-full flex flex-col">
-                  <div className="relative h-64 overflow-hidden bg-gray-100">
-                    <Image
-                      src={product.img}
-                      alt={product.title}
-                      fill
-                      className="object-cover group-hover:scale-125 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="p-6 space-y-4 flex-grow flex flex-col">
-                    <h3 className="text-xl font-bold text-brand-dark">{product.title}</h3>
-                    <p className="text-muted-foreground text-sm flex-grow">{product.desc}</p>
-                    <Link href={product.link}>
-                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 magnetic-hover">
+                <Link href={product.link} className="block h-full">
+                  <div className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 card-3d gradient-border h-full flex flex-col cursor-pointer">
+                    <div className="relative h-64 overflow-hidden bg-gray-100">
+                      <Image
+                        src={product.img}
+                        alt={product.title}
+                        fill
+                        className="object-cover group-hover:scale-125 transition-transform duration-700"
+                      />
+                    </div>
+                    <div className="p-6 space-y-4 flex-grow flex flex-col">
+                      <h3 className="text-xl font-bold text-brand-dark">{product.title}</h3>
+                      <p className="text-muted-foreground text-sm flex-grow">{product.desc}</p>
+                      <Button className="w-full bg-gray-50 hover:bg-primary hover:text-white text-brand-dark font-semibold py-6 rounded-xl transition-all duration-300 group shadow-sm hover:shadow-lg border border-gray-100 hover:border-primary flex items-center justify-between px-6 pointer-events-none">
                         View Product
+                        <ArrowRight className="w-4 h-4 text-primary group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
                       </Button>
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </ScrollAnimation>
             ))}
           </div>
@@ -381,23 +386,23 @@ export default function Home() {
               { title: "Gardening & Paving", img: "/assets/workingarise1.png", desc: "Landscape design and professional paving.", link: "/services/gardening-paving" },
             ].map((service, i) => (
               <ScrollAnimation key={i} animation="scaleIn" delay={i * 80}>
-                <div className="glass-card rounded-2xl p-6 flex flex-col h-full card-3d hover:shadow-2xl transition-shadow duration-500">
-                  <div className="relative h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
-                    <Image
-                      src={service.img}
-                      alt={service.title}
-                      fill
-                      className="object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-dark mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground mb-6 flex-grow">{service.desc}</p>
-                  <Link href={service.link}>
-                    <Button variant="ghost" className="w-fit p-0 hover:bg-transparent hover:text-primary font-semibold group magnetic-hover">
+                <Link href={service.link} className="block h-full">
+                  <div className="glass-card rounded-2xl p-6 flex flex-col h-full card-3d hover:shadow-2xl transition-shadow duration-500 cursor-pointer group">
+                    <div className="relative h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
+                      <Image
+                        src={service.img}
+                        alt={service.title}
+                        fill
+                        className="object-cover hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-dark mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground mb-6 flex-grow">{service.desc}</p>
+                    <Button variant="ghost" className="w-fit p-0 hover:bg-transparent hover:text-primary font-semibold group magnetic-hover pointer-events-none">
                       Learn More <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </ScrollAnimation>
             ))}
           </div>
@@ -411,12 +416,12 @@ export default function Home() {
             <ScrollAnimation animation="slideInLeft">
               <div className="relative">
                 <div className="relative h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl">
-                  <ParallaxSection speed={0.3}>
+                  <ParallaxSection speed={0.3} className="h-full w-full">
                     <Image
                       src="/assets/arissuppplytwo.png"
                       alt="About Arise"
                       fill
-                      className="object-cover"
+                      className="object-cover scale-110"
                     />
                   </ParallaxSection>
                 </div>
@@ -496,18 +501,18 @@ export default function Home() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-24 bg-[#2C3E50] text-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         {/* Animated background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         </div>
 
         <div className="container px-4 relative z-10">
           <ScrollAnimation animation="fadeInUp">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Why Choose Us</h2>
-              <p className="text-white/90 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4 text-brand-dark">Why Choose Us</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                 We are committed to delivering excellence in every project and product we provide.
               </p>
             </div>
@@ -521,12 +526,12 @@ export default function Home() {
               { icon: CheckCircle2, title: "Cost-Effective", desc: "Competitive pricing without compromising quality." },
             ].map((feature, i) => (
               <ScrollAnimation key={i} animation="scaleIn" delay={i * 100}>
-                <div className="text-center space-y-4 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 card-3d">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center mb-4 shadow-lg animate-pulse">
-                    <feature.icon className="w-8 h-8 text-white" />
+                <div className="text-center space-y-4 p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-3d group">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                  <p className="text-white/90 text-sm">{feature.desc}</p>
+                  <h3 className="text-xl font-bold text-brand-dark">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm">{feature.desc}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -567,51 +572,51 @@ export default function Home() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-24 bg-brand-light">
-        <div className="container px-4">
-          <div className="grid lg:grid-cols-2 gap-16">
+      <section id="contact" className="py-24 bg-brand-light relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.png')] opacity-5 pointer-events-none" />
+        <div className="container px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <ScrollAnimation animation="slideInLeft">
               <div className="space-y-8">
-                <div className="space-y-4 text-center">
+                <div className="space-y-4 text-center lg:text-left">
                   <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Get In Touch</h2>
                   <p className="text-muted-foreground text-lg">
                     Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Clock className="w-6 h-6" />
+                <div className="grid gap-6">
+                  <div className="group flex items-start gap-4 p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-white/20 hover:border-primary/20">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                      <Clock className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-brand-dark mb-1">Working Hours</h4>
+                      <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-primary transition-colors">Working Hours</h4>
                       <p className="text-muted-foreground">Sunday - Thursday</p>
-                      <p className="text-muted-foreground">8:00 AM – 5:00 PM</p>
+                      <p className="text-muted-foreground font-medium text-primary">8:00 AM – 5:00 PM</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
-                    <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-brand-dark shrink-0">
-                      <Phone className="w-6 h-6" />
+                  <div className="group flex items-start gap-4 p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-white/20 hover:border-secondary/20">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center text-brand-dark shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                      <Phone className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-brand-dark mb-1">Contact Us</h4>
-                      <p className="text-muted-foreground">+973 33170820</p>
-                      <p className="text-muted-foreground">+973 38786000</p>
+                      <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-secondary transition-colors">Contact Us</h4>
+                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 33170820</p>
+                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 38786000</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
-                    <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-brand-dark shrink-0">
-                      <Truck className="w-6 h-6" />
+                  <div className="group flex items-start gap-4 p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-white/20 hover:border-primary/20">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-dark/5 to-transparent flex items-center justify-center text-brand-dark shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                      <MapPin className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-brand-dark mb-1">Visit Us</h4>
+                      <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-primary transition-colors">Visit Us</h4>
                       <p className="text-muted-foreground">Arise Trading & Maintenance W.L.L</p>
                       <p className="text-muted-foreground">CR No.168617-1, Shop No 2141 Bldg 934</p>
                       <p className="text-muted-foreground">Road 1015, Block 410, Sanabis, Manama</p>
-                      <p className="text-muted-foreground">Kingdom of Bahrain</p>
                     </div>
                   </div>
                 </div>
@@ -619,74 +624,100 @@ export default function Home() {
             </ScrollAnimation>
 
             <ScrollAnimation animation="slideInRight">
-              <Card className="border-none shadow-xl">
-                <CardContent className="p-8 space-y-6">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-20 -z-10 transform rotate-1"></div>
+                <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden">
+                  <div className="h-2 w-full bg-gradient-to-r from-primary via-secondary to-primary"></div>
+                  <CardContent className="p-8 md:p-10 space-y-6">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-brand-dark">Send us a Message</h3>
+                      <p className="text-muted-foreground">We usually respond within 24 hours.</p>
+                    </div>
+
+                    <form onSubmit={handleContactSubmit} className="space-y-5">
+                      <div className="grid sm:grid-cols-2 gap-5">
+                        <div className="space-y-2">
+                          <label className="text-sm font-semibold text-brand-dark ml-1">Full Name</label>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Input
+                              name="name"
+                              placeholder="John Doe"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              required
+                              className="pl-10 bg-white border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 h-12 rounded-xl transition-all"
+                            />
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-semibold text-brand-dark ml-1">Email</label>
+                          <div className="relative">
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Input
+                              name="email"
+                              type="email"
+                              placeholder="john@example.com"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              required
+                              className="pl-10 bg-white border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 h-12 rounded-xl transition-all"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Full Name</label>
-                        <Input
-                          name="name"
-                          placeholder="John Doe"
-                          value={formData.name}
+                        <label className="text-sm font-semibold text-brand-dark ml-1">Phone Number</label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input
+                            name="phone"
+                            type="tel"
+                            placeholder="+973 1234 5678"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            required
+                            className="pl-10 bg-white border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 h-12 rounded-xl transition-all"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-brand-dark ml-1">Message</label>
+                        <Textarea
+                          name="message"
+                          placeholder="How can we help you?"
+                          className="min-h-[150px] bg-white border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl p-4 transition-all resize-none"
+                          value={formData.message}
                           onChange={handleInputChange}
                           required
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium">Email</label>
-                        <Input
-                          name="email"
-                          type="email"
-                          placeholder="john@example.com"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Phone Number</label>
-                      <Input
-                        name="phone"
-                        type="tel"
-                        placeholder="+973 1234 5678"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Message</label>
-                      <Textarea
-                        name="message"
-                        placeholder="How can we help you?"
-                        className="min-h-[150px]"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    {formStatus.type && (
-                      <div
-                        className={`text-sm p-3 rounded ${formStatus.type === "success"
-                          ? "bg-green-50 text-green-700"
-                          : "bg-red-50 text-red-700"
-                          }`}
+
+                      {formStatus.type && (
+                        <div
+                          className={`text-sm p-4 rounded-xl flex items-center gap-2 ${formStatus.type === "success"
+                            ? "bg-green-50 text-green-700 border border-green-100"
+                            : "bg-red-50 text-red-700 border border-red-100"
+                            }`}
+                        >
+                          {formStatus.type === "success" ? <CheckCircle2 className="w-5 h-5" /> : <ShieldCheck className="w-5 h-5" />}
+                          {formStatus.message}
+                        </div>
+                      )}
+
+                      <Button
+                        type="submit"
+                        className="w-full bg-brand-dark hover:bg-primary text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        disabled={isSubmitting}
                       >
-                        {formStatus.message}
-                      </div>
-                    )}
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 text-lg"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                        {isSubmitting ? "Sending..." : "Send Message"}
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </div>
             </ScrollAnimation>
           </div>
         </div>

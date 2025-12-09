@@ -5,7 +5,7 @@ import path from 'path';
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { name, email, phone, message } = body;
+        const { name, email, phone, message, type } = body;
 
         // Validate required fields
         if (!name || !email || !phone || !message) {
@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
             email,
             phone,
             message,
+            type: type || 'contact', // Default to 'contact' if not provided
             createdAt: new Date().toISOString(),
         };
 
