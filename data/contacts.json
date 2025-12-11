@@ -5,7 +5,8 @@
     "email": "sekhmetdiety@gmail.com",
     "phone": "54488125145",
     "message": "need work assistence\n",
-    "createdAt": "2025-12-04T09:51:41.599Z"
+    "createdAt": "2025-12-04T09:51:41.599Z",
+    "status": "Pending"
   },
   {
     "id": "ee394288-d1da-4cfd-90e6-e67ff648f948",
@@ -14,6 +15,7 @@
     "phone": "56568565856",
     "message": "Requesting a Call Back",
     "type": "callback",
-    "createdAt": "2025-12-09T05:44:12.771Z"
+    "createdAt": "2025-12-09T05:44:12.771Z",
+    "status": "Pending"
   }
 ]

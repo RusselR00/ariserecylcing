@@ -12,6 +12,8 @@ interface Contact {
     phone: string;
     message: string;
     type?: 'callback' | 'contact';
+    status?: 'Pending' | 'Completed';
+    comments?: string;
     createdAt: string;
 }
 
@@ -20,6 +22,7 @@ export default function AdminDashboard() {
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [activeTab, setActiveTab] = useState<'pending' | 'completed'>('pending');
 
     useEffect(() => {
         fetchContacts();
@@ -57,13 +60,39 @@ export default function AdminDashboard() {
         }
     };
 
+    const updateContact = async (id: string, updates: { status?: 'Pending' | 'Completed'; comments?: string }) => {
+        try {
+            const response = await fetch("/api/admin/contacts", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, ...updates }),
+            });
+
+            if (response.ok) {
+                // Update local state
+                setContacts(contacts.map(c =>
+                    c.id === id ? { ...c, ...updates } : c
+                ));
+            }
+        } catch (err) {
+            console.error("Update error:", err);
+        }
+    };
+
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleString();
     };
 
-    // Filter contacts
-    const callbackRequests = contacts.filter(c => c.type === 'callback' || c.message === "Requesting a Call Back");
-    const customerMessages = contacts.filter(c => c.type !== 'callback' && c.message !== "Requesting a Call Back");
+    // Filter contacts by type and status
+    const allCallbackRequests = contacts.filter(c => c.type === 'callback' || c.message === "Requesting a Call Back");
+    const allCustomerMessages = contacts.filter(c => c.type !== 'callback' && c.message !== "Requesting a Call Back");
+
+    const callbackRequests = allCallbackRequests.filter(c =>
+        activeTab === 'pending' ? c.status !== 'Completed' : c.status === 'Completed'
+    );
+    const customerMessages = allCustomerMessages.filter(c =>
+        activeTab === 'pending' ? c.status !== 'Completed' : c.status === 'Completed'
+    );
 
     if (loading) {
         return (
@@ -93,6 +122,28 @@ export default function AdminDashboard() {
                     </div>
                 )}
 
+                {/* Tab Switcher */}
+                <div className="flex gap-2 border-b border-gray-200">
+                    <button
+                        onClick={() => setActiveTab('pending')}
+                        className={`px-6 py-3 font-semibold transition-all ${activeTab === 'pending'
+                            ? 'text-primary border-b-2 border-primary'
+                            : 'text-gray-500 hover:text-gray-700'
+                            }`}
+                    >
+                        Pending ({allCallbackRequests.filter(c => c.status !== 'Completed').length + allCustomerMessages.filter(c => c.status !== 'Completed').length})
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('completed')}
+                        className={`px-6 py-3 font-semibold transition-all ${activeTab === 'completed'
+                            ? 'text-primary border-b-2 border-primary'
+                            : 'text-gray-500 hover:text-gray-700'
+                            }`}
+                    >
+                        Completed ({allCallbackRequests.filter(c => c.status === 'Completed').length + allCustomerMessages.filter(c => c.status === 'Completed').length})
+                    </button>
+                </div>
+
                 {/* Callback Requests Table */}
                 <Card>
                     <CardHeader>
@@ -113,6 +164,7 @@ export default function AdminDashboard() {
                                             <th className="text-left p-4 font-semibold">Phone</th>
                                             <th className="text-left p-4 font-semibold">Email</th>
                                             <th className="text-left p-4 font-semibold">Status</th>
+                                            <th className="text-left p-4 font-semibold">Comments</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -125,7 +177,23 @@ export default function AdminDashboard() {
                                                 <td className="p-4">{contact.phone}</td>
                                                 <td className="p-4">{contact.email}</td>
                                                 <td className="p-4">
-                                                    <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Pending</span>
+                                                    <select
+                                                        value={contact.status || 'Pending'}
+                                                        onChange={(e) => updateContact(contact.id, { status: e.target.value as 'Pending' | 'Completed' })}
+                                                        className="px-3 py-1 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                                    >
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Completed">Completed</option>
+                                                    </select>
+                                                </td>
+                                                <td className="p-4">
+                                                    <input
+                                                        type="text"
+                                                        value={contact.comments || ''}
+                                                        onChange={(e) => updateContact(contact.id, { comments: e.target.value })}
+                                                        placeholder="Add comments..."
+                                                        className="w-full px-3 py-1 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                                    />
                                                 </td>
                                             </tr>
                                         ))}
@@ -156,6 +224,8 @@ export default function AdminDashboard() {
                                             <th className="text-left p-4 font-semibold">Email</th>
                                             <th className="text-left p-4 font-semibold">Phone</th>
                                             <th className="text-left p-4 font-semibold">Message</th>
+                                            <th className="text-left p-4 font-semibold">Status</th>
+                                            <th className="text-left p-4 font-semibold">Comments</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -169,6 +239,25 @@ export default function AdminDashboard() {
                                                 <td className="p-4">{contact.phone}</td>
                                                 <td className="p-4 max-w-md truncate" title={contact.message}>
                                                     {contact.message}
+                                                </td>
+                                                <td className="p-4">
+                                                    <select
+                                                        value={contact.status || 'Pending'}
+                                                        onChange={(e) => updateContact(contact.id, { status: e.target.value as 'Pending' | 'Completed' })}
+                                                        className="px-3 py-1 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                                    >
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Completed">Completed</option>
+                                                    </select>
+                                                </td>
+                                                <td className="p-4">
+                                                    <input
+                                                        type="text"
+                                                        value={contact.comments || ''}
+                                                        onChange={(e) => updateContact(contact.id, { comments: e.target.value })}
+                                                        placeholder="Add comments..."
+                                                        className="w-full px-3 py-1 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                                    />
                                                 </td>
                                             </tr>
                                         ))}
