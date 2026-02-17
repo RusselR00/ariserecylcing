@@ -51,10 +51,12 @@ export default function Home() {
 
   const submitForm = async (e: React.FormEvent, type: 'callback' | 'contact') => {
     e.preventDefault();
+    console.log(`Starting ${type} form submission...`);
     setIsSubmitting(true);
     setFormStatus({ type: null, message: "" });
 
     try {
+      console.log("Fetching /api/contact...");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +67,9 @@ export default function Home() {
         }),
       });
 
+      console.log("Response status:", response.status);
       const data = await response.json();
+      console.log("Response data:", data);
 
       if (response.ok) {
         setFormStatus({
@@ -79,12 +83,14 @@ export default function Home() {
           message: data.error || "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Submission error:", error);
       setFormStatus({
         type: "error",
-        message: "Failed to submit form. Please try again.",
+        message: `Failed to submit form: ${error.message || "Please try again."}`,
       });
     } finally {
+      console.log("Form submission process finished.");
       setIsSubmitting(false);
     }
   };

@@ -9,9 +9,16 @@ export async function POST(request: NextRequest) {
         const { name, email, phone, message, type } = body;
 
         // Validate required fields
-        if (!name || !email || !phone || !message) {
+        if (!name || !email || !phone) {
             return NextResponse.json(
-                { error: 'All fields are required' },
+                { error: 'Name, email, and phone are required' },
+                { status: 400 }
+            );
+        }
+
+        if (type !== 'callback' && !message) {
+            return NextResponse.json(
+                { error: 'Message is required' },
                 { status: 400 }
             );
         }
@@ -23,13 +30,13 @@ export async function POST(request: NextRequest) {
             name,
             email,
             phone,
-            message,
+            message: message || 'Requesting a Call Back',
             type: type || 'contact',
             createdAt: serverTimestamp(),
         });
 
         const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Firestore operation timed out')), 5000)
+            setTimeout(() => reject(new Error('Firestore operation timed out')), 10000)
         );
 
         await Promise.race([savePromise, timeoutPromise]);
