@@ -147,7 +147,7 @@ export default function Home() {
                 <span className="text-yellow-400 animate-fadeInUp stagger-1">Service Excellence</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto lg:mx-0 font-semibold animate-fadeInUp stagger-2">
-                Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region.
+                Delivering excellence in Steel Fabrication, Professional Maintenance Solutions, and General Trading services
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 md:pt-4 animate-fadeInUp stagger-3">
@@ -603,7 +603,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-secondary transition-colors">Contact Us</h4>
-                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 33170820</p>
+                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 38786000</p>
                       <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 38786000</p>
                     </div>
                   </div>
