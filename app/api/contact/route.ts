@@ -3,6 +3,7 @@ import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export async function POST(request: NextRequest) {
+    console.log('POST /api/contact started');
     try {
         const body = await request.json();
         const { name, email, phone, message, type } = body;
@@ -15,8 +16,10 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Add to Firestore
-        await addDoc(collection(db, 'contacts'), {
+        // Add to Firestore with timeout
+        console.log('Attempting to save to Firestore...', { type: type || 'contact' });
+
+        const savePromise = addDoc(collection(db, 'contacts'), {
             name,
             email,
             phone,
@@ -25,14 +28,27 @@ export async function POST(request: NextRequest) {
             createdAt: serverTimestamp(),
         });
 
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Firestore operation timed out')), 5000)
+        );
+
+        await Promise.race([savePromise, timeoutPromise]);
+
+        console.log('Firestore save successful');
+
         return NextResponse.json(
             { success: true, message: 'Contact form submitted successfully' },
             { status: 200 }
         );
-    } catch (error) {
-        console.error('Error saving contact:', error);
+    } catch (error: any) {
+        console.error('Error in /api/contact:', error.message || error);
+
+        const errorMessage = error.message === 'Firestore operation timed out'
+            ? 'Connection to database timed out. Please try again.'
+            : 'Failed to submit contact form. Please try again.';
+
         return NextResponse.json(
-            { error: 'Failed to submit contact form' },
+            { error: errorMessage, details: error.message },
             { status: 500 }
         );
     }
