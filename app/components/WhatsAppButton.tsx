@@ -1,5 +1,5 @@
 export default function WhatsAppButton() {
-    const phoneNumber = "97333170820"; // +973 33170820 in international format without +
+    const phoneNumber = "97336406655"; // +973 33170820 in international format without +
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
     return (

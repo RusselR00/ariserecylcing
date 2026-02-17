@@ -3,8 +3,8 @@ import { Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function MobileContactButtons() {
-    const phoneNumber = "+97333170820";
-    const whatsappNumber = "97333170820";
+    const phoneNumber = "+97336406655";
+    const whatsappNumber = "97336406655";
 
     const handleCall = () => {
         window.location.href = `tel:${phoneNumber}`;
