@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export async function POST(request: NextRequest) {
     try {
@@ -15,34 +15,15 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Create contact entry
-        const contact = {
-            id: crypto.randomUUID(),
+        // Add to Firestore
+        await addDoc(collection(db, 'contacts'), {
             name,
             email,
             phone,
             message,
-            type: type || 'contact', // Default to 'contact' if not provided
-            createdAt: new Date().toISOString(),
-        };
-
-        // Read existing contacts
-        const filePath = path.join(process.cwd(), 'data', 'contacts.json');
-        let contacts = [];
-
-        try {
-            const fileContent = await fs.readFile(filePath, 'utf-8');
-            contacts = JSON.parse(fileContent);
-        } catch (error) {
-            // File doesn't exist or is empty, start with empty array
-            contacts = [];
-        }
-
-        // Add new contact
-        contacts.push(contact);
-
-        // Write back to file
-        await fs.writeFile(filePath, JSON.stringify(contacts, null, 2));
+            type: type || 'contact',
+            createdAt: serverTimestamp(),
+        });
 
         return NextResponse.json(
             { success: true, message: 'Contact form submitted successfully' },

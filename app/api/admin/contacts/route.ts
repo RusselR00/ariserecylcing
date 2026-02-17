@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifySession } from '@/lib/auth';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { db } from '@/lib/firebase';
+import { collection, getDocs, doc, updateDoc, query, orderBy } from 'firebase/firestore';
 
 export async function GET() {
     try {
@@ -15,29 +15,21 @@ export async function GET() {
             );
         }
 
-        // Read contacts from JSON file
-        const filePath = path.join(process.cwd(), 'data', 'contacts.json');
+        // Fetch contacts from Firestore
+        const contactsQuery = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(contactsQuery);
 
-        try {
-            const fileContent = await fs.readFile(filePath, 'utf-8');
-            const contacts = JSON.parse(fileContent);
+        const contacts = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            // Convert Firestore timestamp to ISO string for the frontend
+            createdAt: doc.data().createdAt?.toDate().toISOString() || new Date().toISOString()
+        }));
 
-            // Sort by date (newest first)
-            contacts.sort((a: any, b: any) =>
-                new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-            );
-
-            return NextResponse.json(
-                { contacts },
-                { status: 200 }
-            );
-        } catch (error) {
-            // File doesn't exist or is empty
-            return NextResponse.json(
-                { contacts: [] },
-                { status: 200 }
-            );
-        }
+        return NextResponse.json(
+            { contacts },
+            { status: 200 }
+        );
     } catch (error) {
         console.error('Error fetching contacts:', error);
         return NextResponse.json(
@@ -69,44 +61,19 @@ export async function PUT(request: NextRequest) {
             );
         }
 
-        // Read contacts from JSON file
-        const filePath = path.join(process.cwd(), 'data', 'contacts.json');
+        // Update document in Firestore
+        const contactRef = doc(db, 'contacts', id);
+        const updateData: any = {};
 
-        try {
-            const fileContent = await fs.readFile(filePath, 'utf-8');
-            let contacts = JSON.parse(fileContent);
+        if (status !== undefined) updateData.status = status;
+        if (comments !== undefined) updateData.comments = comments;
 
-            // Find and update the contact
-            const contactIndex = contacts.findIndex((c: any) => c.id === id);
+        await updateDoc(contactRef, updateData);
 
-            if (contactIndex === -1) {
-                return NextResponse.json(
-                    { error: 'Contact not found' },
-                    { status: 404 }
-                );
-            }
-
-            // Update fields
-            if (status !== undefined) {
-                contacts[contactIndex].status = status;
-            }
-            if (comments !== undefined) {
-                contacts[contactIndex].comments = comments;
-            }
-
-            // Write back to file
-            await fs.writeFile(filePath, JSON.stringify(contacts, null, 2));
-
-            return NextResponse.json(
-                { success: true, contact: contacts[contactIndex] },
-                { status: 200 }
-            );
-        } catch (error) {
-            return NextResponse.json(
-                { error: 'Failed to read or update contacts' },
-                { status: 500 }
-            );
-        }
+        return NextResponse.json(
+            { success: true },
+            { status: 200 }
+        );
     } catch (error) {
         console.error('Error updating contact:', error);
         return NextResponse.json(
