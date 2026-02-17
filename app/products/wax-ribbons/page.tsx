@@ -42,7 +42,7 @@ export default function WaxRibbons() {
                         </div>
                         <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
                             <Image
-                                src="/assets/print2.png"
+                                src="/assets/wax_ribbon.jpeg"
                                 alt="Wax Ribbons"
                                 fill
                                 className="object-cover"

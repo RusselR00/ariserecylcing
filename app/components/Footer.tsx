@@ -96,17 +96,17 @@ export default function Footer() {
                             <div className="flex items-start gap-3 text-gray-200">
                                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-1" />
                                 <p>Arise Trading & Maintenance W.L.L
-                                    CR No.168617-1, Shop No 2141 Bldg 934
-                                    Road 1015, Block 410, Sanabis, Manama
+                                    CR No.168617-1, Building No 2259
+                                    Road 4448, Block 744, Al Ramli, Salmabad
                                     Kingdom of Bahrain</p>
                             </div>
                             <div className="flex items-center gap-3 text-gray-200">
                                 <Phone className="w-5 h-5 text-secondary shrink-0" />
-                                <p>+973 33170820 | 38786000</p>
+                                <p>+973 38786000 | +973 33170820 </p>
                             </div>
                             <div className="flex items-center gap-3 text-gray-200">
                                 <Mail className="w-5 h-5 text-secondary shrink-0" />
-                                <p>info@arisetrading.com</p>
+                                <p>info@arisebahrain.com</p>
                             </div>
                         </div>
 

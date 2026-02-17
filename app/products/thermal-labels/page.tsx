@@ -42,7 +42,7 @@ export default function ThermalLabels() {
                         </div>
                         <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
                             <Image
-                                src="/assets/print1.png"
+                                src="/assets/thermal_labels.jpeg"
                                 alt="Thermal Labels"
                                 fill
                                 className="object-cover"

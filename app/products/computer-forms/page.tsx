@@ -42,7 +42,7 @@ export default function ComputerForms() {
                         </div>
                         <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
                             <Image
-                                src="/assets/printing realistic1.png"
+                                src="/assets/computerf.png"
                                 alt="Computer Forms"
                                 fill
                                 className="object-cover"

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Your trusted partner for Corporate Supplies, Trading, and Professional Maintenance solutions in the region.",
   keywords: "Trading, Maintenance, Corporate Supplies, Thermal Paper, Professional Services, Qatar",
   icons: {
-    icon: "/assets/newerlogo2.png",
+    icon: "/assets/ARISENEWLOGO-1.png",
   },
 };
 

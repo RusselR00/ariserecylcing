@@ -85,7 +85,7 @@ export default function Header() {
                 >
                     <div className="relative h-20 w-56">
                         <Image
-                            src="/assets/newerlogo2.png"
+                            src="/assets/ARISENEWLOGO-1.png"
                             alt="Arise Trading & Maintenance"
                             fill
                             className="object-contain object-left"

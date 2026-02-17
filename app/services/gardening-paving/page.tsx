@@ -42,7 +42,7 @@ export default function GardeningPaving() {
                         </div>
                         <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
                             <Image
-                                src="/assets/workingarise1.png"
+                                src="/assets/gardening.png"
                                 alt="Gardening & Paving"
                                 fill
                                 className="object-cover"

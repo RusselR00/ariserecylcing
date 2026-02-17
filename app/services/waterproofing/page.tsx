@@ -42,7 +42,7 @@ export default function Waterproofing() {
                         </div>
                         <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
                             <Image
-                                src="/assets/insulation2.png"
+                                src="/assets/waterproofing.png"
                                 alt="Waterproofing"
                                 fill
                                 className="object-cover"

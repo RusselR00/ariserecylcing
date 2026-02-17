@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown, User, Mail, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Phone, ShieldCheck, ThumbsUp, Truck, Wrench, ChevronDown, User, Mail, MapPin, Hammer } from "lucide-react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
@@ -266,11 +266,11 @@ export default function Home() {
 
       </section>
 
-      {/* TWO PILLAR SECTION */}
+      {/* THREE PILLAR SECTION */}
       <section className="py-24 bg-brand-light relative overflow-hidden">
         <AnimatedBackground />
         <div className="container px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
             {/* Trading Pillar */}
             <ScrollAnimation animation="slideInLeft">
               <div className="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 card-3d">
@@ -281,11 +281,33 @@ export default function Home() {
                   </div>
                   <h2 className="text-3xl font-bold text-brand-dark font-heading">Premium Trading Solutions</h2>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Providing high-quality industrial and office supplies, specializing in thermal paper, ribbons, and custom printing forms for businesses of all sizes.
+                    Providing high-quality industrial and office supplies, specializing in thermal paper, ribbons and custom printing forms for businesses of all sizes.
                   </p>
                   <Button variant="link" className="text-primary p-0 h-auto font-semibold text-lg group-hover:translate-x-2 transition-transform">
                     <Link href="#trading" className="flex items-center gap-2">
                       View Products <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+              </div>
+            </ScrollAnimation>
+
+            {/* Fabrication Pillar */}
+            <ScrollAnimation animation="fadeInUp" delay={200}>
+              <div className="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 card-3d">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="p-8 lg:p-12 space-y-6 relative z-10 text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                    <Hammer className="w-8 h-8" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-brand-dark font-heading">Steel & Stainless Steel Fabrication</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Steel and stainless steel fabrication for industrial and commercial applications, built to the highest standards of quality and durability.
+                  </p>
+                  <Button variant="link" className="text-primary p-0 h-auto font-semibold text-lg group-hover:translate-x-2 transition-transform">
+                    <Link href="#contact" className="flex items-center gap-2">
+                      View Projects <ArrowRight className="w-5 h-5" />
                     </Link>
                   </Button>
                 </div>
@@ -303,7 +325,7 @@ export default function Home() {
                   </div>
                   <h2 className="text-3xl font-bold text-brand-dark font-heading">Professional Maintenance</h2>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Dedicated to delivering reliable, cost-effective maintenance and interior/exterior fit-out solutions for commercial properties and facilities.
+                    Delivering reliable maintenance services and comprehensive interior and exterior fit-out solutions tailored to commercial environments.
                   </p>
                   <Button variant="link" className="text-brand-dark p-0 h-auto font-semibold text-lg group-hover:translate-x-2 transition-transform">
                     <Link href="#maintenance" className="flex items-center gap-2">
@@ -333,8 +355,8 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: "Thermal Paper Rolls", img: "/assets/rollingpaper1.png", desc: "High-sensitivity, long-life image paper.", link: "/products/thermal-paper-rolls" },
-              { title: "Thermal Labels", img: "/assets/thermal_labels.jpeg", desc: "Custom size and adhesive options.", link: "/products/thermal-labels" },
-              { title: "Computer Forms", img: "/assets/printing realistic1.png", desc: "Tailored multi-ply and continuous forms.", link: "/products/computer-forms" },
+              { title: "Thermal Labels and Stickers", img: "/assets/thermal_labels.jpeg", desc: "Custom size and adhesive options.", link: "/products/thermal-labels" },
+              { title: "Computer Forms", img: "/assets/computerf.png", desc: "Tailored multi-ply and continuous forms.", link: "/products/computer-forms" },
               { title: "Wax Ribbons", img: "/assets/wax_ribbon.jpeg", desc: "Premium quality ribbons for clear printing.", link: "/products/wax-ribbons" },
             ].map((product, i) => (
               <ScrollAnimation key={i} animation="fadeInUp" delay={i * 100}>
@@ -364,6 +386,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FABRICATION PROJECTS */}
+      <section id="fabrication-projects" className="py-24 bg-gray-50">
+        <div className="container px-4">
+          <ScrollAnimation animation="fadeInUp">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Steel & Stainless Steel Fabrication Projects</h2>
+              <p className="text-lg text-muted-foreground">
+                Showcasing our precision engineering and high-quality fabrication works for industrial and commercial sectors.
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Industrial Steel Support Architecture",
+                img: "/assets/steelfabrication1.png",
+                desc: "Custom-engineered structural steel support systems for large-scale industrial facilities."
+              },
+              {
+                title: "Precision Metal Structural Works",
+                img: "/assets/fabrication2.png",
+                desc: "High-grade metal fabrication focusing on structural integrity and architectural precision."
+              },
+              {
+                title: "Stainless Steel Infrastructure",
+                img: "/assets/steel.jpeg",
+                desc: "Premium stainless steel solutions designed for durability and aesthetic excellence in commercial environments."
+              }
+            ].map((project, i) => (
+              <ScrollAnimation key={i} animation="fadeInUp" delay={i * 150}>
+                <div className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 card-3d h-full flex flex-col">
+                  <div className="relative h-72 overflow-hidden bg-gray-100">
+                    <Image
+                      src={project.img}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  <div className="p-6 space-y-3 flex-grow flex flex-col">
+                    <h3 className="text-xl font-bold text-brand-dark">{project.title}</h3>
+                    <p className="text-muted-foreground text-sm flex-grow leading-relaxed">
+                      {project.desc}
+                    </p>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* MAINTENANCE SERVICES */}
       <section id="maintenance" className="py-24 bg-brand-light">
         <div className="container px-4">
@@ -381,9 +457,9 @@ export default function Home() {
               { title: "General Maintenance", img: "/assets/tools1.png", desc: "Comprehensive property maintenance services.", link: "/services/general-maintenance" },
               { title: "Interior Works", img: "/assets/carpentry1.png", desc: "Custom interior fit-outs and carpentry.", link: "/services/interior-works" },
               { title: "Exterior Works", img: "/assets/building1.png", desc: "Professional exterior maintenance solutions.", link: "/services/exterior-works" },
-              { title: "Waterproofing", img: "/assets/insulation2.png", desc: "Advanced waterproofing and insulation.", link: "/services/waterproofing" },
+              { title: "Waterproofing", img: "/assets/waterproofing.png", desc: "Advanced waterproofing and insulation.", link: "/services/waterproofing" },
               { title: "Electrical & Plumbing", img: "/assets/wiring1.png", desc: "Expert electrical wiring and plumbing.", link: "/services/electrical-plumbing" },
-              { title: "Gardening & Paving", img: "/assets/workingarise1.png", desc: "Landscape design and professional paving.", link: "/services/gardening-paving" },
+              { title: "Gardening & Paving", img: "/assets/gardening.png", desc: "Landscape design and professional paving.", link: "/services/gardening-paving" },
             ].map((service, i) => (
               <ScrollAnimation key={i} animation="scaleIn" delay={i * 80}>
                 <Link href={service.link} className="block h-full">
@@ -478,13 +554,13 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-bold text-brand-dark font-heading">Message from Chairman</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed text-center">
                   <p>
-                    At Arise, we take great pride in being a leading player in the thermal paper trading industry. Since our inception, we have been dedicated to delivering high-quality products and services to meet the growing demands of businesses across Kingdom of Bahrain.
+                    At Arise Trading & Maintenance W.L.L., we are driven by a passion for excellence and innovation. Fully licensed and authorized by the Kingdom of Bahrain, we provide Steel & Stainless Steel Fabrication, Professional Maintenance Solutions, and General Trading services that empower businesses to thrive.
                   </p>
                   <p>
-                    Our commitment to innovation, sustainability, and customer satisfaction drives everything we do. In an increasingly competitive market, we continue to focus on building strong relationships with our clients, ensuring that they receive not only the best products but also the best service experience.
+                    From precision-engineered steel structures to reliable maintenance and high-quality corporate consumables, we deliver solutions built on strength, quality, and trust. Our dedicated team combines expertise, modern technology, and a commitment to regulatory compliance to exceed client expectations every day.
                   </p>
                   <p>
-                    Our team is continually adapting to the latest technological advancements and industry trends to offer solutions that meet the evolving needs of our customers. As we move forward, our vision is to expand our reach into new markets and industries while maintaining the high standards that have been the hallmark of our success.
+                    We are proud of the partnerships we have built and remain focused on expanding our impact across the region — delivering exceptional results with integrity, reliability, and passion.
                   </p>
                   <p>
                     We are also committed to embracing environmentally responsible practices, ensuring that our operations contribute to a sustainable future. Thank you for being a part of our journey, and I look forward to continuing our growth and success together.
@@ -513,7 +589,7 @@ export default function Home() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4 text-brand-dark">Why Choose Us</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                We are committed to delivering excellence in every project and product we provide.
+                Our commitment is simple: to deliver exceptional quality in every product, service, and project we undertake
               </p>
             </div>
           </ScrollAnimation>
@@ -604,7 +680,7 @@ export default function Home() {
                     <div>
                       <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-secondary transition-colors">Contact Us</h4>
                       <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 38786000</p>
-                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 38786000</p>
+                      <p className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">+973 33170820</p>
                     </div>
                   </div>
 
@@ -615,8 +691,9 @@ export default function Home() {
                     <div>
                       <h4 className="font-bold text-brand-dark mb-1 text-lg group-hover:text-primary transition-colors">Visit Us</h4>
                       <p className="text-muted-foreground">Arise Trading & Maintenance W.L.L</p>
-                      <p className="text-muted-foreground">CR No.168617-1, Shop No 2141 Bldg 934</p>
-                      <p className="text-muted-foreground">Road 1015, Block 410, Sanabis, Manama</p>
+                      <p className="text-muted-foreground">CR No.168617-1, Building No 2259 </p>
+                      <p className="text-muted-foreground">Road No.4448, Block 744, Al Ramli, </p>
+                      <p className="text-muted-foreground">Salmabad, Kingdom of Bahrain</p>
                     </div>
                   </div>
                 </div>
@@ -709,7 +786,7 @@ export default function Home() {
 
                       <Button
                         type="submit"
-                        className="w-full bg-brand-dark hover:bg-primary text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
